@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react"
+import PropTypes from "prop-types"
 import Transcription from "./Transcription"
 import Translation from "./Translation"
 
@@ -49,7 +50,7 @@ export default function Information(props) {
         return () => worker.current.removeEventListener('message', onMessageReceived)
     })
 
-    const outText = output.map(ele => ele.text).join(" ")
+    // const outText = output.map(ele => ele.text).join(" ")
     function generateTranslation() {
         if (translating || toLang === 'Select language') { return }
         setTranslating(true)
@@ -76,4 +77,7 @@ export default function Information(props) {
 
         </main>
     )
+}
+Information.propTypes = {
+    output: PropTypes.func.isRequired
 }

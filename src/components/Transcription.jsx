@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types'
 
-export default function Transcription(props) {
-    const { output, handleCopy, handleDownload } = props
+export default function Transcription({ output, handleCopy, handleDownload }) {
     const textStr = output.map(ele => ele.text).join(" ")
     console.log(textStr)
     return (
@@ -10,4 +10,10 @@ export default function Transcription(props) {
                 <button onClick={() => handleDownload(textStr)} title="download" className="duration-200 hover:text-blue-400 text-base"><i className="fa-solid fa-file-arrow-down"></i></button>
             </div></>
     )
+}
+
+Transcription.propTypes = {
+    output: PropTypes.object.isRequired,
+    handleCopy: PropTypes.func.isRequired,
+    handleDownload: PropTypes.func.isRequired,
 }

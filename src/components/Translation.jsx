@@ -1,6 +1,9 @@
 import { LANGUAGES } from "../utils/presets"
+import PropTypes from 'prop-types'
+
 export default function Translation(props) {
-    const { handleCopy, handleDownload, toLang, setToLang, translation, translating, generateTranslation } = props
+    const { handleCopy, handleDownload, toLang, setToLang, translation = "", translating = false, generateTranslation
+    } = props
     return (
         <>
             {!translating && (<>
@@ -31,4 +34,14 @@ export default function Translation(props) {
             </>)}
         </>
     )
+}
+
+Translation.propTypes = {
+    handleCopy: PropTypes.func.isRequired,
+    handleDownload: PropTypes.func.isRequired,
+    toLang: PropTypes.string.isRequired,
+    setToLang: PropTypes.func.isRequired,
+    translation: PropTypes.string,
+    translating: PropTypes.bool,
+    generateTranslation: PropTypes.func.isRequired,
 }

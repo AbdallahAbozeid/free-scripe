@@ -13,8 +13,7 @@ function App() {
   const [downloading, setDownloading] = useState(false)
   const [loading, setLoading] = useState(false)
   const [output, setOutput] = useState(null)
-  const [finished, setFinished] = useState(false)
-  function handelAudioReset() {
+  function handleAudioReset() {
     setFile(null)
     setAudioStream(null)
   }
@@ -41,7 +40,6 @@ function App() {
           console.log(e.data.results)
           break;
         case 'INFERENCE_DONE':
-          setFinished(true)
           console.log("DONE")
           break;
       }
@@ -86,7 +84,7 @@ function App() {
                 handleFormSubmission={handleFormSubmission}
                 file={file}
                 audioStream={audioStream}
-                handelAudioReset={handelAudioReset}
+                handleAudioReset={handleAudioReset}
                 setDownloading={setDownloading} /> :
                 <HomePage
                   setFile={setFile}

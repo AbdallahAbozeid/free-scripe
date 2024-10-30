@@ -1,6 +1,6 @@
-
+import PropTypes from "prop-types"
 export default function Transcripting(props) {
-    const { downloading, loading } = props
+    const { loading = false } = props
     return (
         <main className="flex-1 p-4 flex flex-col justify-center items-center gap-10 sm:gap-12 md:gap-14 pb-28">
             <h1 className="font-semibold bold text-4xl sm:text-5xl md:text-6xl text-blue-400">Transcripting</h1>
@@ -14,4 +14,7 @@ export default function Transcripting(props) {
                 })}</div>
         </main >
     )
+}
+Transcripting.propTypes = {
+    loading: PropTypes.bool
 }

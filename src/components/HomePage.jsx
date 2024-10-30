@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "react"
-
+import PropTypes from "prop-types"
 export default function HomePage(props) {
     const { setFile, setAudioStream } = props
     const [recordingStatus, setRecordingStatus] = useState("inactive")
-    const [audioChunks, setAudioChunks] = useState([])
     const [duration, setDuration] = useState(0)
     const mediaRecorder = useRef(null)
     const mediaStream = useRef(null)
@@ -31,10 +30,8 @@ export default function HomePage(props) {
             if (event.data.size === 0) { return }
             localChuncks.push(event.data)
         }
-        // setAudioChunks(localChuncks)
         mediaRecorder.current.onstop = () => {
             const audioBlob = new Blob(localChuncks, { type: mimeType })
-            setAudioChunks([])
             setAudioStream(audioBlob)
             console.log('Stop Recording')
         }
@@ -73,4 +70,9 @@ export default function HomePage(props) {
             <p className="italic text-sm sm:text-base text-slate-400">Free now, free forever</p>
         </main>
     )
+}
+
+HomePage.propTypes = {
+    setFile: PropTypes.func.isRequired,
+    setAudioStream: PropTypes.func.isRequired
 }
